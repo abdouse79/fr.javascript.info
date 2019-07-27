@@ -2,24 +2,24 @@ importance: 5
 
 ---
 
-# Improved tooltip behavior
+# Comportement amélioré d'une info-bulle 
 
-Write JavaScript that shows a tooltip over an element with the attribute `data-tooltip`.
+Ecrivez un code en JavaScript montrant une info-bulle sur un élément  avec l'attribut `data-tooltip`.
 
-That's like the task <info:task/behavior-tooltip>, but here the annotated elements can be nested. The most deeply nested tooltip is shown.
+C'est comme la tache <info:task/behavior-tooltip>, mais ici les éléments annotes peuvent être  imbriques. L'info-bulle la plus imbriquée est montrée.
 
-For instance:
+Par example:
 
 ```html
 <div data-tooltip="Here – is the house interior" id="house">
   <div data-tooltip="Here – is the roof" id="roof"></div>
   ...
-  <a href="https://en.wikipedia.org/wiki/The_Three_Little_Pigs" data-tooltip="Read on…">Hover over me</a>
+  <a href="https://en.wikipedia.org/wiki/The_Three_Little_Pigs" data-tooltip="Read on…">Survolez moi</a>
 </div>
 ```
 
-The result in iframe:
+Le résultat dans l'iframe:
 
 [iframe src="solution" height=300 border=1]
 
-P.S. Hint: only one tooltip may show up at the same time.
+P.S. Astuce: une seule info-bulle peut être montrée à la fois.

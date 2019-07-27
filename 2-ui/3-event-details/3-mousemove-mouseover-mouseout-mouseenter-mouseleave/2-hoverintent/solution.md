@@ -1,18 +1,17 @@
+L'algorithme est simple: 
+1. Attachez les gestionnaires des évènements `onmouseover/out` sur les éléments. Vous pouvez aussi utiliser `onmouseenter/leave` ici, mais ils sont moins universels, ils ne vont pas fonctionner ici si nous introduisons la délégation.
+2. Lorsque le curseur de la souris entre en contact avec l'élément, commence à mesurer la vitesse avec l'évènement `mousemove`.
+3. Si la vitesse est lente, alors exécute `over`.
+4. Plus tard si nous sommes hors de l’élément, et `over` a été exécuté, lance `out`.
 
-The algorithm looks simple:
-1. Put `onmouseover/out` handlers on the element. Also can use `onmouseenter/leave` here, but they are less universal, won't work if we introduce delegation.
-2. When a mouse cursor entered the element, start measuring the speed on `mousemove`.
-3. If the speed is slow, then run `over`.
-4. Later if we're out of the element, and `over` was executed, run `out`.
+La question est: "Comment mesurer la vitesse?"
 
-The question is: "How to measure the speed?"
+La première idée serait: d'exécuter notre fonction chaque `100ms` et de mesurer la distance entre les cordonnées précédentes et celles nouvelles. Si elle est petite, alors la vitesse est petite.
 
-The first idea would be: to run our function every `100ms` and measure the distance between previous and new coordinates. If it's small, then the speed is small.
+Malheureusement, il n'y a aucun moyen d'obtenir "les coordonnées en temps réelle de la souris" en JavaScript. Il n'existe pas de  fonction comme `getCurrentMouseCoordinates()`.
 
-Unfortunately, there's no way to get "current mouse coordinates" in JavaScript. There's no function like `getCurrentMouseCoordinates()`.
+La seule manière d'obtenir les coordonnées est d'écouter les évènements de la souris  tel que `mousemove`.
 
-The only way to get coordinates is to listen to mouse events, like `mousemove`.
+Alors nous pouvons mettre un gestionnaire d'évènement  `mousemove`  pour contrôler les coordonnées et nous souvenir d'elles. Ensuite nous pouvons les comparer une fois chaque `100ms`.
 
-So we can set a handler on `mousemove` to track coordinates and remember them. Then we can compare them, once per `100ms`.
-
-P.S. Please note: the solution tests use `dispatchEvent` to see if the tooltip works right.
+P.S. Notez bien: la solution teste l'usage de `dispatchEvent` pour voir si l'info-bulle fonctionne correctement.
